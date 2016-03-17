@@ -25,6 +25,7 @@ public class BallDemo
     {
         myCanvas = new Canvas("Ball Demo", 600, 500);
         listaBolas = new ArrayList<>();
+        rnd = new Random();
     }
 
     /**
@@ -41,7 +42,7 @@ public class BallDemo
 
         for(int i = 0; i < numeroBolas; i++){
             // crate and show the balls
-            listaBolas.add(new BouncingBall(50, 50, 16, Color.BLUE, ground, myCanvas));
+            listaBolas.add(new BouncingBall(50, 50, rnd.nextInt(40) + 10, Color.BLUE, ground, myCanvas));
             listaBolas.get(i).draw();
         }
 
