@@ -42,7 +42,7 @@ public class BallDemo
 
         for(int i = 0; i < numeroBolas; i++){
             // crate and show the balls
-            listaBolas.add(new BouncingBall(rnd.nextInt(300), 50, rnd.nextInt(40) + 10, new 
+            listaBolas.add(new BouncingBall(rnd.nextInt(300), rnd.nextInt(450) + 50, rnd.nextInt(40) + 10, new 
                     Color(rnd.nextInt(255),rnd.nextInt(255),rnd.nextInt(255)), ground, myCanvas));
             listaBolas.get(i).draw();
         }
