@@ -42,7 +42,8 @@ public class BallDemo
 
         for(int i = 0; i < numeroBolas; i++){
             // crate and show the balls
-            listaBolas.add(new BouncingBall(50, 50, rnd.nextInt(40) + 10, Color.BLUE, ground, myCanvas));
+            listaBolas.add(new BouncingBall(rnd.nextInt(300), 50, rnd.nextInt(40) + 10, new 
+                    Color(rnd.nextInt(255),rnd.nextInt(255),rnd.nextInt(255)), ground, myCanvas));
             listaBolas.get(i).draw();
         }
 
@@ -52,11 +53,10 @@ public class BallDemo
             myCanvas.wait(50);           // small delay
             for(int i = 0; i < numeroBolas; i++){
                 listaBolas.get(i).move();
-            
-            // stop once ball has travelled a certain distance on x axis
-            if(listaBolas.get(i).getXPosition() >= 550) {
-                finished = true;
-            }
+                // stop once ball has travelled a certain distance on x axis
+                if(listaBolas.get(i).getXPosition() >= 550) {
+                    finished = true;
+                }
             }
         }
     }
