@@ -18,14 +18,18 @@ public class BoxBall
     private Canvas canvas;
     private int ySpeed = 1;                // initial downward speed
     private int xSpeed = 1;
-    private boolean ejeHorizontal;
-    private boolean ejeVertical;
+    private boolean ejeHorizontal;         // True si se mueve horizonalmente hacia la derecha
+    private boolean ejeVertical;           // True si se mueve verticalmente hacia abajo
+    private int rectangleXIni;
+    private int rectangleXFin;
+    private int rectangleYIni;
+    private int rectangleYFin;
 
     /**
      * Constructor for objects of class BoxBall
      */
     public BoxBall(int xPos, int yPos, int ballDiameter, Color ballColor,
-    Canvas drawingCanvas, boolean horizontal, boolean vertical)
+    Canvas drawingCanvas, boolean horizontal, boolean vertical, int xInic, int xFin, int yInic, int yFin)
     {
         xPosition = xPos;
         yPosition = yPos;
@@ -34,6 +38,10 @@ public class BoxBall
         canvas = drawingCanvas;
         ejeHorizontal = horizontal;
         ejeVertical = vertical;
+        rectangleXIni = xInic;
+        rectangleXFin = xFin;
+        rectangleYIni = yInic;
+        rectangleYFin = yFin;
     }
 
     /**
@@ -73,10 +81,10 @@ public class BoxBall
             xPosition -= xSpeed;
         }
 
-        if(xPosition <= 50 || xPosition >= 550 - diameter){
+        if(xPosition <= rectangleXIni || xPosition >= rectangleXFin - diameter){
             ejeHorizontal = !ejeHorizontal;
         }
-        if(yPosition <= 50 || yPosition >= 450 - diameter){
+        if(yPosition <= rectangleYIni || yPosition >= rectangleYFin - diameter){
             ejeVertical = !ejeVertical;
         }
         
