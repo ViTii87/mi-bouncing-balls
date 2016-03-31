@@ -20,11 +20,15 @@ public class BoxBall
     private final int groundPosition;      // y position of ground
     private Canvas canvas;
     private int ySpeed = 1;                // initial downward speed
+    private int xSpeed = 1;
+    private boolean ejeHorizontal;
+    private boolean ejeVertical;
+
     /**
      * Constructor for objects of class BoxBall
      */
     public BoxBall(int xPos, int yPos, int ballDiameter, Color ballColor,
-                        int groundPos, Canvas drawingCanvas)
+    int groundPos, Canvas drawingCanvas, boolean horizontal, boolean vertical)
     {
         xPosition = xPos;
         yPosition = yPos;
@@ -32,9 +36,11 @@ public class BoxBall
         diameter = ballDiameter;
         groundPosition = groundPos;
         canvas = drawingCanvas;
+        ejeHorizontal = horizontal;
+        ejeVertical = vertical;
     }
 
-     /**
+    /**
      * Draw this ball at its current position onto the canvas.
      **/
     public void draw()
@@ -58,18 +64,26 @@ public class BoxBall
     {
         // remove from canvas at the current position
         erase();
-            
-        // compute new position
-        ySpeed += GRAVITY;
-        yPosition += ySpeed;
-        xPosition +=2;
-
-        // check if it has hit the ground
-        if(yPosition >= (groundPosition - diameter) && ySpeed > 0) {
-            yPosition = (int)(groundPosition - diameter);
-            ySpeed = -ySpeed + ballDegradation; 
+        if(ejeVertical){
+            yPosition += ySpeed;
+        }
+        else{
+            yPosition -= ySpeed;
+        }
+        if(ejeHorizontal){
+            xPosition += xSpeed;
+        }
+        else{
+            xPosition -= xSpeed;
         }
 
+        if(xPosition <= 50 || xPosition >= 550 - diameter){
+            ejeHorizontal = !ejeHorizontal;
+        }
+        if(yPosition <= 50 || yPosition >= 450 - diameter){
+            ejeVertical = !ejeVertical;
+        }
+        
         // draw again at new position
         draw();
     }    
