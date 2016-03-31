@@ -79,7 +79,7 @@ public class BallDemo
         for(int i = 0; i < numeroBolas; i++){
             // crate and show the balls
             listaBolas2.add(new BoxBall(rnd.nextInt(450) + 50, + rnd.nextInt(350) + 50 , rnd.nextInt(40) + 10, new 
-                    Color(rnd.nextInt(255),rnd.nextInt(255),rnd.nextInt(255)), ground, myCanvas, rnd.nextBoolean(),
+                    Color(rnd.nextInt(255),rnd.nextInt(255),rnd.nextInt(255)), myCanvas, rnd.nextBoolean(),
                     rnd.nextBoolean()));
             listaBolas2.get(i).draw();
         }

@@ -9,15 +9,12 @@ import java.awt.geom.*;
  */
 public class BoxBall
 {
-    private static final int GRAVITY = 3;  // effect of gravity
-
     private int ballDegradation = 2;
     private Ellipse2D.Double circle;
     private Color color;
     private int diameter;
     private int xPosition;
     private int yPosition;
-    private final int groundPosition;      // y position of ground
     private Canvas canvas;
     private int ySpeed = 1;                // initial downward speed
     private int xSpeed = 1;
@@ -28,13 +25,12 @@ public class BoxBall
      * Constructor for objects of class BoxBall
      */
     public BoxBall(int xPos, int yPos, int ballDiameter, Color ballColor,
-    int groundPos, Canvas drawingCanvas, boolean horizontal, boolean vertical)
+    Canvas drawingCanvas, boolean horizontal, boolean vertical)
     {
         xPosition = xPos;
         yPosition = yPos;
         color = ballColor;
         diameter = ballDiameter;
-        groundPosition = groundPos;
         canvas = drawingCanvas;
         ejeHorizontal = horizontal;
         ejeVertical = vertical;
