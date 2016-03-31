@@ -61,5 +61,36 @@ public class BallDemo
         }
     }
     
-    
+    /**
+     * Simula bolas saltarinas dentro de un rectangulo.
+     */
+    public void boxBounce(int numeroBolas){
+        int ground = 400;   // position of the ground line
+
+        myCanvas.setVisible(true);
+        
+        myCanvas.drawLine(50,50,550,50);
+        myCanvas.drawLine(50,50,50,450);
+        myCanvas.drawLine(50,450,550,450);
+        myCanvas.drawLine(550,50,550,450);
+        
+        ArrayList<BoxBall> listaBolas2 = new ArrayList<>();
+        
+        for(int i = 0; i < numeroBolas; i++){
+            // crate and show the balls
+            listaBolas2.add(new BoxBall(rnd.nextInt(450) + 50, + rnd.nextInt(350) + 50 , rnd.nextInt(40) + 10, new 
+                    Color(rnd.nextInt(255),rnd.nextInt(255),rnd.nextInt(255)), ground, myCanvas, rnd.nextBoolean(),
+                    rnd.nextBoolean()));
+            listaBolas2.get(i).draw();
+        }
+
+        // make them bounce
+        boolean finished =  false;
+        while(!finished) {
+            myCanvas.wait(50);           // small delay
+            for(int i = 0; i < numeroBolas; i++){
+                listaBolas2.get(i).move();
+            }
+        }
+    }
 }
